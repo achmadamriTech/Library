@@ -34,6 +34,7 @@ public class SewaService {
         return sewaDetailRepository.getAllSewaDetail();
     }
 
+    // Menampilkan Data SewaById
     public Sewa getAllSewaById(Long sewaId){
         Optional<Sewa> sewaOptional = sewaRepository.findById(sewaId);
 
@@ -42,6 +43,15 @@ public class SewaService {
         } else {
             return sewaOptional.get();
         }
+    }
+
+    public SewaDetail getSewaDetailById(Long sewaId){
+        Optional<SewaDetail> sewaDetailOptional = sewaDetailRepository.findById(sewaId);
+
+        if (sewaDetailOptional.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data Sewa Tidak Ada!");
+        }
+        return sewaDetailOptional.get();
     }
 
 
