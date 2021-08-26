@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @RequestMapping("/sewa")
 public class SewaController {
@@ -28,15 +29,22 @@ public class SewaController {
         return sewaService.getAllSewa();
     }
 
+    // Get Data Berdasarkan ID Sewa
+    @GetMapping("/{sewaId}")
+    public Sewa get(@PathVariable Long sewaId){
+        return sewaService.getAllSewaById(sewaId);
+    }
+
     // Get Semua Data SewaDetail
     @GetMapping("/detail/")
     public List<SewaDetail> getAllSewaDetail(){
         return sewaService.getAllSewaDetail();
     }
 
-    // Get Data Berdasarkan ID Sewa
-    @GetMapping("/{sewaId}")
-    public Sewa get(@PathVariable Long sewaId){
-        return sewaService.getAllSewaById(sewaId);
+    // Get Data Berdasarkan SewaDetailById
+    @GetMapping("/detail/{sewaId}")
+    public SewaDetail getAllSewaDetailById(@PathVariable Long sewaId){
+        return sewaService.getSewaDetailById(sewaId);
     }
+    
 }
