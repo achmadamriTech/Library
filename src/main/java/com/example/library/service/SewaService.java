@@ -61,7 +61,7 @@ public class SewaService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Sewa Sudah Ada");
         }
         else {
-            sewaRepositorysave(sewa);
+            sewaRepository.save(sewa);
             throw new ResponseStatusException(HttpStatus.OK, "Sewa Berhasil di Input");
         }
         
