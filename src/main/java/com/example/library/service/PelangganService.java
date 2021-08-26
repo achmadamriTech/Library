@@ -70,7 +70,7 @@ public class PelangganService {
 
     // Ambil Data berdasarkan nama
     public List<Pelanggan> getPelangganByNama(String nama){
-        List<Pelanggan> pelanggan = pelangganRepository.findByNAMAIgnoreCase(nama); 
+        List<Pelanggan> pelanggan = pelangganRepository.findByNAMAContainingIgnoreCase(nama); 
         
         if(pelanggan.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nama Tidak Ditemukan");

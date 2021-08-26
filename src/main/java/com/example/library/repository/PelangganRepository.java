@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PelangganRepository extends JpaRepository<Pelanggan, Long> {
     
-    List<Pelanggan> findByNAMAIgnoreCase(String nama);
+    List<Pelanggan> findByNAMAContainingIgnoreCase(String nama);
 
     Optional<Pelanggan> findByID(Long pelangganId);
 }
