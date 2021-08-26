@@ -16,12 +16,12 @@ public interface SewaDetailRepository extends JpaRepository<SewaDetail, Long> {
     "SELECT "
     + " S.ID, S.TGLSEWA, S.LAMASEWA, S.KETERANGAN, "
     + " S.ISBN, B.JUDUL, B.PENGARANG, "
-    + " S.PELANGGANID, P.KODEPEL, P.NAMA, P.TELP, P.EMAIL "
+    + " S.PELANGGANID, P.KODEPEL, P.NAMA, P.EMAIL, P.TELP "
     + "FROM SEWA S "
     + "INNER JOIN PELANGGAN P ON S.PELANGGANID=P.ID "
     + "INNER JOIN BUKU B ON S.ISBN=B.ISBN "
     + "WHERE S.ID=:sewaId", nativeQuery = true)
-public List<SewaDetail> getSewaDetailById(@Param("sewaId") Long sewaId);
+    public List<SewaDetail> getSewaDetailById(@Param("sewaId") Long sewaId);
 
 @Query(value =
     "SELECT "

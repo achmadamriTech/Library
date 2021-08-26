@@ -46,13 +46,24 @@ public class SewaService {
     }
 
     public SewaDetail getSewaDetailById(Long sewaId){
-        Optional<SewaDetail> sewaDetailOptional = sewaDetailRepository.findById(sewaId);
+        Optional<SewaDetail> sewaDetail = sewaDetailRepository.findById(sewaId);
 
-        if (sewaDetailOptional.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data Sewa Tidak Ada!");
+        if (sewaDetail.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data tidak Ditemukan!");
         }
-        return sewaDetailOptional.get();
+        return sewaDetail.get();
     }
 
+    public void createSewa(Sewa sewa) {
+        Optional<Sewa> sewaOptional = sewaRepository.findById(sewa.getID());
 
+        if (sewaOptional.isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Sewa Sudah Ada");
+        }
+        else {
+            sewaRepositorysave(sewa);
+            throw new ResponseStatusException(HttpStatus.OK, "Sewa Berhasil di Input");
+        }
+        
+    }
 }

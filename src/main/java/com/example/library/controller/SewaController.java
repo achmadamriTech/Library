@@ -43,7 +43,7 @@ public class SewaController {
 
     // Get Data Berdasarkan SewaDetailById
     @GetMapping("/detail/{sewaId}")
-    public SewaDetail getAllSewaDetailById(@PathVariable Long sewaId){
+    public SewaDetail getSewaDetailById (@PathVariable Long sewaId) {
         return sewaService.getSewaDetailById(sewaId);
     }
     
