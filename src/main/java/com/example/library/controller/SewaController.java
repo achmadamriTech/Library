@@ -8,6 +8,8 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,6 +47,11 @@ public class SewaController {
     @GetMapping("/detail/{sewaId}")
     public SewaDetail getSewaDetailById (@PathVariable Long sewaId) {
         return sewaService.getSewaDetailById(sewaId);
+    }
+
+    @PostMapping("")
+    public void createSewa(@RequestBody final Sewa sewa ){
+        sewaService.createSewa(sewa);
     }
     
 }
