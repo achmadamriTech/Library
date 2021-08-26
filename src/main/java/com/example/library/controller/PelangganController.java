@@ -55,4 +55,10 @@ public class PelangganController {
     public void editPelanggan(@PathVariable final long pelangganId, @RequestBody final Pelanggan pelanggan){
         pelangganService.editPelanggan(pelangganId, pelanggan);
     }
+
+    // Menampilkan pelanggan berdasarkan nama pelanggan
+    @GetMapping("/{nama}")
+    public List<Pelanggan> getPelangganByNama(@PathVariable(name="nama") String nama){
+        return pelangganService.getPelangganByNama(nama);
+    }  
 }

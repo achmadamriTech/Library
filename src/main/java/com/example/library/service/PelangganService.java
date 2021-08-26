@@ -69,7 +69,7 @@ public class PelangganService {
     }
 
     // Ambil Data berdasarkan nama
-    public List<Pelanggan> getBukuByNama(String nama){
+    public List<Pelanggan> getPelangganByNama(String nama){
         List<Pelanggan> pelanggan = pelangganRepository.findByNAMAIgnoreCase(nama); 
         
         if(pelanggan.isEmpty()){
