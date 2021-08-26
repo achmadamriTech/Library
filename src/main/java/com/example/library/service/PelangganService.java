@@ -67,4 +67,14 @@ public class PelangganService {
             throw new ResponseStatusException(HttpStatus.CONFLICT," Data Tidak Ditemukan!");
         }
     }
+
+    // Ambil Data berdasarkan nama
+    public List<Pelanggan> getBukuByNama(String nama){
+        List<Pelanggan> pelanggan = pelangganRepository.findByNAMAIgnoreCase(nama); 
+        
+        if(pelanggan.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nama Tidak Ditemukan");
+        }
+        return pelanggan;
+    }
 }
