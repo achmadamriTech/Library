@@ -57,7 +57,7 @@ public class PelangganController {
     }
 
     // Menampilkan pelanggan berdasarkan nama pelanggan
-    @GetMapping("/{nama}")
+    @GetMapping("/nama/{nama}")
     public List<Pelanggan> getPelangganByNama(@PathVariable(name="nama") String nama){
         return pelangganService.getPelangganByNama(nama);
     }  
