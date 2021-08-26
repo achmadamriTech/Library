@@ -6,6 +6,7 @@ import com.example.library.entity.SewaDetail;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,10 +50,17 @@ public class SewaController {
         return sewaService.getSewaDetailById(sewaId);
     }
 
+    // Insert Data
     @PostMapping("")
     public void createSewa(@RequestBody final Sewa sewa ){
         sewaService.createSewa(sewa);
     }
+
+    //  Delete Data
+    @DeleteMapping("/{sewaId}")
+    public void deleteSewa(@PathVariable final Long sewaId){
+       sewaService.deleteSewa(sewaId);
+}
     
     
 }
