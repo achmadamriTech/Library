@@ -77,6 +77,6 @@ public class SewaService {
             throw new ResponseStatusException(HttpStatus.OK, "Data Sewa Berhasil Di hapus");
         }
         else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Buku Tidak Ada");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data Sewa Tidak Ada");
     }
 }
