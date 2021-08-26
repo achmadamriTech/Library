@@ -54,6 +54,7 @@ public class SewaService {
         return sewaDetail.get();
     }
 
+    // Insert Data Service
     public void createSewa(Sewa sewa) {
         Optional<Sewa> sewaOptional = sewaRepository.findById(sewa.getID());
 
@@ -65,5 +66,17 @@ public class SewaService {
             throw new ResponseStatusException(HttpStatus.OK, "Sewa Berhasil di Input");
         }
         
+    }
+
+    // Delete Data Service
+    public void deleteSewa(Long sewaId) {
+        Optional<Sewa> sewaOptional = sewaRepository.findById(sewaId);
+
+        if(sewaOptional.isPresent()) {
+            sewaRepository.deleteById(sewaId);
+            throw new ResponseStatusException(HttpStatus.OK, "Data Sewa Berhasil Di hapus");
+        }
+        else
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Buku Tidak Ada");
     }
 }
