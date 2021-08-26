@@ -68,7 +68,7 @@ public class SewaService {
         
     }
 
-    // Delete Data Service
+    // Delete Data Sewa
     public void deleteSewa(Long sewaId) {
         Optional<Sewa> sewaOptional = sewaRepository.findById(sewaId);
 
@@ -79,4 +79,27 @@ public class SewaService {
         else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data Sewa Tidak Ada");
     }
+
+    // Edit Data Sewa
+    public void editSewa(Long sewaId, Sewa sewa){
+        Optional<Sewa> sewaOptional = sewaRepository.findById(sewaId);
+
+        if(sewaOptional.isPresent()) {
+            sewaRepository.save(sewa);
+            throw new ResponseStatusException(HttpStatus.OK, "Sewa Berhasil Diubah");
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sewa Sudah Ada");
+        }
+    }
+
+    public Sewa getSewaByID(Long id) {
+        if (!sewaRepository.findById(id).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No matching ID was found!");
+        }
+
+        return sewaRepository.findById(id).get();
+    }
+
+
 }
