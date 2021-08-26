@@ -1,7 +1,9 @@
 package com.example.library.service;
 
+import com.example.library.repository.SewaDetailRepository;
 import com.example.library.repository.SewaRepository;
 import com.example.library.entity.Sewa;
+import com.example.library.entity.SewaDetail;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +18,20 @@ public class SewaService {
     @Autowired
     private SewaRepository sewaRepository;
 
+    @Autowired
+    private SewaDetailRepository sewaDetailRepository;
+
     // Menampilkan Seluruh Data
     public List<Sewa> getAllSewa(){
         return sewaRepository.findAll();
+    }
+
+    // Menampilkan Data SewaDetail
+    public List<SewaDetail> getAllSewaDetail(){
+        if(sewaDetailRepository.getAllSewaDetail().isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Data Tidak Ditemukan!");
+        }
+        return sewaDetailRepository.getAllSewaDetail();
     }
 
     public Sewa getAllSewaById(Long sewaId){
