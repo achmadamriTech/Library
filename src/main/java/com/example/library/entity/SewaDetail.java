@@ -45,7 +45,7 @@ public class SewaDetail {
     @Column(nullable = false)
     private String NAMA;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String TELP;
 
     @Column(nullable = false)

@@ -56,14 +56,14 @@ public class SewaService {
 
     // Insert Data Service
     public void createSewa(Sewa sewa) {
-        Optional<Sewa> sewaOptional = sewaRepository.findById(sewa.getID());
+        Optional<Sewa> sewaOptional = sewaRepository.findByID(sewa.getID());
 
         if (sewaOptional.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Sewa Sudah Ada");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Data Sewa Sudah Ada");
         }
         else {
             sewaRepository.save(sewa);
-            throw new ResponseStatusException(HttpStatus.OK, "Sewa Berhasil di Input");
+            throw new ResponseStatusException(HttpStatus.OK, "Data Sewa Berhasil Di Tambah");
         }
         
     }

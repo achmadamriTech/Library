@@ -1,5 +1,7 @@
 package com.example.library.repository;
 
+import java.util.Optional;
+
 import com.example.library.entity.Sewa;
 
 // import java.util.List;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SewaRepository extends JpaRepository<Sewa, Long> {
     
+    Optional<Sewa> findByID(Long ID);
+
     // @Query(value =
     //     "SELECT "
     //     + " S.ID, S.TGLSEWA, S.LAMASEWA, S.KETERANGAN "
