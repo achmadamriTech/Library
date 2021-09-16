@@ -7,6 +7,7 @@ import com.example.library.entity.Buku;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
 // Membuat Repository untuk dipanggil ke service
 @Repository
 public interface BukuRepository extends JpaRepository<Buku, Long> {

@@ -1,61 +1,50 @@
 package com.example.library.service;
 
-import com.example.library.repository.SewaDetailRepository;
-import com.example.library.repository.SewaRepository;
-import com.example.library.entity.Sewa;
-import com.example.library.entity.SewaDetail;
-
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatus;
+import com.example.library.repository.SewaDetailRepository;
+import com.example.library.repository.SewaRepository;
+import com.example.library.entity.SewaDetail;
+import com.example.library.entity.Sewa;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
-public class SewaService {
+public class SewaDetailService {
+    @Autowired
+    private SewaDetailRepository sewaDetailRepository;
     @Autowired
     private SewaRepository sewaRepository;
 
-    @Autowired
-    private SewaDetailRepository sewaDetailRepository;
-
-    // Menampilkan Seluruh Data
-    public List<Sewa> getAllSewa(){
-        return sewaRepository.findAll();
-    }
-
-    // Menampilkan Data SewaDetail
-    public List<SewaDetail> getAllSewaDetail(){
-        if(sewaDetailRepository.getAllSewaDetail().isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Data Tidak Ditemukan!");
+    // Get All Data Detail
+    public List<SewaDetail> getAllSewaDetails() {
+        if (sewaDetailRepository.getAllSewaDetail().isEmpty()) {
+	        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sewa tidak ada");
         }
         return sewaDetailRepository.getAllSewaDetail();
     }
 
-    // Menampilkan Data SewaById
-    public Sewa getAllSewaById(Long sewaId){
-        Optional<Sewa> sewaOptional = sewaRepository.findById(sewaId);
-
-        if(sewaOptional.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sewa tidak ada");
-        } else {
-            return sewaOptional.get();
-        }
+    // Get All Data Sewa
+    public List<Sewa> getAllSewa(){
+        return sewaRepository.getAllSewa();
     }
 
-    public SewaDetail getSewaDetailById(Long sewaId){
-        Optional<SewaDetail> sewaDetail = sewaDetailRepository.findById(sewaId);
-
-        if (sewaDetail.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data tidak Ditemukan!");
+    // Get Data By ID
+    public Optional<SewaDetail> getSewaDetailById(Long sewaId) {
+        Optional<SewaDetail> result = sewaDetailRepository.getSewaDetailById(sewaId);
+        
+        if (result.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Data Sewa tidak ada!");
         }
-        return sewaDetail.get();
+        return result;
     }
 
-    // Insert Data Service
-    public void createSewa(Sewa sewa) {
+     // Insert Data Service
+     public void createSewa(Sewa sewa) {
         Optional<Sewa> sewaOptional = sewaRepository.findByID(sewa.getID());
 
         if (sewaOptional.isPresent()) {

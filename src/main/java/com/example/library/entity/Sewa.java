@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 public class Sewa {
     @Id
     @SequenceGenerator(name = "SEWA_SEQ", allocationSize = 1 )
-    @GeneratedValue(generator = "SEWA_SEQ", strategy = GenerationType.SEQUENCE )
+    @GeneratedValue(generator = "SEWA_SEQ", strategy = GenerationType.SEQUENCE)
     private Long ID;
 
     @Column(nullable=false)
@@ -29,7 +29,7 @@ public class Sewa {
     private Long LAMASEWA;
 
     @Column(nullable=true)
-    private String KETERANGAN;  
+    private String KETERANGAN;
     
 
     public Long getID() {
@@ -79,5 +79,5 @@ public class Sewa {
     public void setKETERANGAN(String KETERANGAN) {
         this.KETERANGAN = KETERANGAN;
     }
-
+    
 }

@@ -1,8 +1,9 @@
 package com.example.library.repository;
 
-import com.example.library.entity.SewaDetail;
-
 import java.util.List;
+import java.util.Optional;
+
+import com.example.library.entity.SewaDetail;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,26 +12,25 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SewaDetailRepository extends JpaRepository<SewaDetail, Long> {
-    
     @Query(value =
     "SELECT "
-    + " S.ID, S.TGLSEWA, S.LAMASEWA, S.KETERANGAN, "
-    + " S.ISBN, B.JUDUL, B.PENGARANG, "
-    + " S.PELANGGANID, P.KODEPEL, P.NAMA, P.EMAIL, P.TELP "
-    + "FROM SEWA S "
-    + "INNER JOIN PELANGGAN P ON S.PELANGGANID=P.ID "
-    + "INNER JOIN BUKU B ON S.ISBN=B.ISBN "
-    + "WHERE S.ID=:sewaId", nativeQuery = true)
-    public List<SewaDetail> getSewaDetailById(@Param("sewaId") Long sewaId);
+    + " s.id, s.tglsewa, s.lamasewa, s.keterangan, "
+    + " s.isbn, b.judul, b.pengarang, "
+    + " s.pelangganid, p.kodepel, p.nama, p.telp, p.email "
+    + "FROM Sewa s "
+    + "INNER JOIN Pelanggan p ON s.pelangganid=p.id "
+    + "INNER JOIN Buku b ON s.isbn=b.isbn "
+    + "WHERE s.id=:sewaId", nativeQuery = true)
+    public Optional<SewaDetail> getSewaDetailById(@Param("sewaId") Long sewaId);
 
-@Query(value =
+    @Query(value =
     "SELECT "
-    + " S.ID, S.TGLSEWA, S.LAMASEWA, S.KETERANGAN, "
-    + " S.ISBN, B.JUDUL, B.PENGARANG, "
-    + " S.PELANGGANID, P.KODEPEL, P.NAMA, P.TELP, P.EMAIL "
-    + "FROM SEWA S "
-    + "INNER JOIN PELANGGAN P ON S.PELANGGANID=P.ID "
-    + "INNER JOIN BUKU B ON S.ISBN=B.ISBN "
+    + " s.id, s.tglsewa, s.lamasewa, s.keterangan, "
+    + " s.isbn, b.judul, b.pengarang, "
+    + " s.pelangganid, p.kodepel, p.nama, p.telp, p.email "
+    + "FROM Sewa s "
+    + "INNER JOIN Pelanggan p ON s.pelangganid=p.id "
+    + "INNER JOIN Buku b ON s.isbn=b.isbn "
     , nativeQuery = true)
-public List<SewaDetail> getAllSewaDetail();
+    public List<SewaDetail> getAllSewaDetail();
 }

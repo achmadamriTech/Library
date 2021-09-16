@@ -1,10 +1,12 @@
 package com.example.library.controller;
 
-import com.example.library.service.SewaService;
-import com.example.library.entity.Sewa;
 import com.example.library.entity.SewaDetail;
+import com.example.library.entity.Sewa;
 
 import java.util.List;
+import java.util.Optional;
+
+import com.example.library.service.SewaDetailService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,55 +22,47 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/sewa")
 public class SewaController {
-    
-    private SewaService sewaService;
+    private SewaDetailService sewaDetailService;
 
     // Constructor
-    public SewaController(SewaService sewaService) {
-        this.sewaService = sewaService;
+    public SewaController(SewaDetailService sewaDetailService) {
+        this.sewaDetailService = sewaDetailService;
     }
 
-    // Get Semua Data Sewa
+    // Get All Data
     @GetMapping("/")
-    public List<Sewa> getAllSewa(){
-        return sewaService.getAllSewa();
+    public List<Sewa> getAllSewa() {
+        return sewaDetailService.getAllSewa();
     }
 
-    // Get Data Berdasarkan ID Sewa
-    @GetMapping("/{sewaId}")
-    public Sewa get(@PathVariable Long sewaId){
-        return sewaService.getAllSewaById(sewaId);
+    // Get All Data Detail
+    @GetMapping("/detail")
+    public List<SewaDetail> getAllSewaDetails() {
+        return sewaDetailService.getAllSewaDetails();
     }
 
-    // Get Semua Data SewaDetail
-    @GetMapping("/detail/")
-    public List<SewaDetail> getAllSewaDetail(){
-        return sewaService.getAllSewaDetail();
-    }
-
-    // Get Data Berdasarkan SewaDetailById
+    // Get By Id
     @GetMapping("/detail/{sewaId}")
-    public SewaDetail getSewaDetailById (@PathVariable Long sewaId) {
-        return sewaService.getSewaDetailById(sewaId);
+    public Optional<SewaDetail> getSewaDetailById (@PathVariable final Long sewaId) {
+        return sewaDetailService.getSewaDetailById(sewaId);
     }
 
     // Insert Data
     @PostMapping("")
     public void createSewa(@RequestBody final Sewa sewa ){
-        sewaService.createSewa(sewa);;
+        sewaDetailService.createSewa(sewa);
     }
 
-    //  Delete Data
-    @DeleteMapping("/{sewaId}")
-    public void deleteSewa(@PathVariable final Long sewaId){
-       sewaService.deleteSewa(sewaId);
-}   
-
+     //  Delete Data
+     @DeleteMapping("/{sewaId}")
+     public void deleteSewa(@PathVariable final Long sewaId){
+        sewaDetailService.deleteSewa(sewaId);
+    }
+    
     // Update Data
     @PutMapping("/{sewaId}")
     public void editSewa(@PathVariable final Long sewaId, @RequestBody final Sewa sewa) {
-        sewaService.editSewa(sewaId, sewa);
+        sewaDetailService.editSewa(sewaId, sewa);
     }
-    
-    
+
 }

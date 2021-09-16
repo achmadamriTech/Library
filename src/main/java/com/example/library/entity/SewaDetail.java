@@ -14,138 +14,139 @@ import javax.persistence.Table;
 @Table(name = "SEWA")
 public class SewaDetail {
     @Id
-    @SequenceGenerator(name = "SEWA_SEQ", allocationSize = 1 )
+    @SequenceGenerator(name = "SEWA_SEQ", allocationSize = 1)
     @GeneratedValue(generator = "SEWA_SEQ", strategy = GenerationType.SEQUENCE)
-    private Long ID;
+    @Column(name = "ID")
+    private Long id;
 
-    @Column(nullable = false)
-    private Date TGLSEWA;
+    @Column(name = "TGLSEWA")
+    private Date tglsewa;
 
-    @Column(nullable = false)
-    private int LAMASEWA;
+    @Column(name = "LAMASEWA")
+    private int lamasewa;
 
-    @Column(nullable = true)
-    private String KETERANGAN;
+    @Column(name = "KETERANGAN")
+    private String keterangan;
 
-    @Column(nullable = false)
-    private String ISBN;
+    @Column(name = "ISBN")
+    private String isbn;
 
-    @Column(nullable = false)
-    private String JUDUL;
+    @Column(name = "JUDUL")
+    private String judul;
 
-    @Column(nullable = false)
-    private String PENGARANG;
+    @Column(name = "PENGARANG")
+    private String pengarang;
 
-    @Column(nullable = false)
-    private String PELANGGANID;
+    @Column(name = "PELANGGANID")
+    private Long pelangganid;
 
-    @Column(nullable = false)
-    private String KODEPEL;
+    @Column(name = "KODEPEL")
+    private String kodepel;
 
-    @Column(nullable = false)
-    private String NAMA;
+    @Column(name = "NAMA")
+    private String nama;
 
-    @Column(nullable = false)
-    private String TELP;
+    @Column(name = "TELP")
+    private String telp;
 
-    @Column(nullable = false)
-    private String EMAIL;
+    @Column(name = "EMAIL")
+    private String email;
 
 
-    public Long getID() {
-        return this.ID;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Date getTGLSEWA() {
-        return this.TGLSEWA;
+    public Date getTglsewa() {
+        return this.tglsewa;
     }
 
-    public void setTGLSEWA(Date TGLSEWA) {
-        this.TGLSEWA = TGLSEWA;
+    public void setTglsewa(Date tglsewa) {
+        this.tglsewa = tglsewa;
     }
 
-    public int getLAMASEWA() {
-        return this.LAMASEWA;
+    public int getLamasewa() {
+        return this.lamasewa;
     }
 
-    public void setLAMASEWA(int LAMASEWA) {
-        this.LAMASEWA = LAMASEWA;
+    public void setLamasewa(int lamasewa) {
+        this.lamasewa = lamasewa;
     }
 
-    public String getKETERANGAN() {
-        return this.KETERANGAN;
+    public String getKeterangan() {
+        return this.keterangan;
     }
 
-    public void setKETERANGAN(String KETERANGAN) {
-        this.KETERANGAN = KETERANGAN;
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
     }
 
-    public String getISBN() {
-        return this.ISBN;
+    public String getIsbn() {
+        return this.isbn;
     }
 
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
-    public String getJUDUL() {
-        return this.JUDUL;
+    public String getJudul() {
+        return this.judul;
     }
 
-    public void setJUDUL(String JUDUL) {
-        this.JUDUL = JUDUL;
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
-    public String getPENGARANG() {
-        return this.PENGARANG;
+    public String getPengarang() {
+        return this.pengarang;
     }
 
-    public void setPENGARANG(String PENGARANG) {
-        this.PENGARANG = PENGARANG;
+    public void setPengarang(String pengarang) {
+        this.pengarang = pengarang;
     }
 
-    public String getPELANGGANID() {
-        return this.PELANGGANID;
+    public Long getPelangganid() {
+        return this.pelangganid;
     }
 
-    public void setPELANGGANID(String PELANGGANID) {
-        this.PELANGGANID = PELANGGANID;
+    public void setPelangganid(Long pelangganid) {
+        this.pelangganid = pelangganid;
     }
 
-    public String getKODEPEL() {
-        return this.KODEPEL;
+    public String getKodepel() {
+        return this.kodepel;
     }
 
-    public void setKODEPEL(String KODEPEL) {
-        this.KODEPEL = KODEPEL;
+    public void setKodepel(String kodepel) {
+        this.kodepel = kodepel;
     }
 
-    public String getNAMA() {
-        return this.NAMA;
+    public String getNama() {
+        return this.nama;
     }
 
-    public void setNAMA(String NAMA) {
-        this.NAMA = NAMA;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
-    public String getTELP() {
-        return this.TELP;
+    public String getTelp() {
+        return this.telp;
     }
 
-    public void setTELP(String TELP) {
-        this.TELP = TELP;
+    public void setTelp(String telp) {
+        this.telp = telp;
     }
 
-    public String getEMAIL() {
-        return this.EMAIL;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setEMAIL(String EMAIL) {
-        this.EMAIL = EMAIL;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }
